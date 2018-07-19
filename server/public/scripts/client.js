@@ -1,8 +1,8 @@
-let app = angular.module('movieApp', ['ngRoute'])
+let app = angular.module('MovieApp', ['ngRoute'])
 
-app.config( function($routeProvider){
+app.config(function($routeProvider){
 
-    $routerProvider
+    $routeProvider
     .when('/add', {
         templateUrl: 'views/addEntry.html',
         controller: 'AddEntryController as vm'

@@ -6,10 +6,11 @@ const PORT =process.env.PORT || 3000;
 
 const movieCollectionRouter = require('./routes/movieCollection.router');
 
+
 app.use(express.static('./server/public'));
 app.use(bodyParser.urlencoded({ extended: true}));
 app.use(bodyParser.json());
-app.use('/movies', movies);
+app.use('/movies', movieCollectionRouter);
 
 
 

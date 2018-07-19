@@ -4,22 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script src="vendors/angular-animate.min.js"></script>
+    <title>Movie Collection</title>
+    <!-- Angular and Angular-Route -->
+    <script src="vendors/angular.min.js"></script>
     <script src="vendors/angular-route.min.js"></script>
+    <!-- Angular material  -->
     <link rel="stylesheet" href="vendors/angular-material.css">
     <script src="vendors/angular-animate.min.js"></script>
     <script src="vendors/angular-aria.min.js"></script>
     <script src="vendors/angular-material.min.js"></script>
+    <!-- client Side -->
     <script src="scripts/client.js"></script>
-    <!-- controller 1 -->
-    <!-- controller 2 -->
+    <script src="scripts/service/movieCollection.service.js"></script>
+    <script src="scripts/controllers/addEntry.controller.js"></script>
+    <script src="scripts/controllers/manage.controller.js"></script>
+    <!-- CSS -->
     <link rel="stylesheet" href="style/style.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <title>Movie Collection</title>
 </head>
-<body ng-app="movieApp">
+<body ng-app="MovieApp">
      <ng-include src="'views/templates/nav.html'"></ng-include>
-
     <ng-view>
         NOTHING GOES HERE!
     </ng-view>
