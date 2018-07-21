@@ -4,7 +4,7 @@ const bodyParser = require('body-parser')
 const PORT =process.env.PORT || 3000;
 
 
-const movieCollectionRouter = require('./routes/movieCollection.router');
+const movieCollectionRouter = require('./routes/movieCollection.router.js');
 
 
 app.use(express.static('./server/public'));

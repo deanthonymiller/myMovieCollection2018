@@ -5,7 +5,7 @@ const Pool = pg.Pool;
 const pool = new Pool({
     host:'localhost',
     port:'5432',
-    database: 'MovieCollection',
+    database: 'MoiveCollection',
     max: 10,
     idleTimeoutMillis: 30000
 });

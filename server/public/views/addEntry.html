@@ -1,1 +1,25 @@
+
+<div class="container">
 <h1>Add Movie!</h1>
+
+<input ng-model="vm.newMovie.name" type="text" placeholder="name">
+<br>
+
+
+        <select ng-model="vm.newMovie.genre_id">
+                <option disabled selected value> --Select Movie Genre </option>
+                <option ng-repeat="mGenre in vm.genreOfMovies.list" value="{{mGenre.id}}">{{mGenre.genre}}</option>
+            </select>
+<input ng-model="vm.newMovie.release_date" type="date">
+<input ng-model="vm.newMovie.run_time" type="text" placeholder="Run Time">
+<button ng-click="vm.addMovies(vm.newMovie)">Submit Movie</button>
+
+<div ng-repeat="movie in vm.addedMovies.list">
+    <h1>{{movie.name}}</h1>
+    <p>{{movie.genre_id}}</p>
+    <p>{{movie.release_date}}</p>
+    <p>{{movie.image_path}}</p>
+    <p>{{movie.run_time}}</p>
+    <button>delete</button>
+</div>
+</div>

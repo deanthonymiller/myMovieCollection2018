@@ -4,7 +4,7 @@ CREATE TABLE "movies" (
     "image_path" VARCHAR(200) NOT NULL,
     "release_date" VARCHAR(20) NOT NULL,
     "genre" VARCHAR(20) NOT NULL,
-    "run_time" INTEGER NOT NULL
+    "run_time" VARCHAR(20) NOT NULL
 );
 
 INSERT INTO "movies" ("name", "image_path", "release_date", "genre", "run_time")

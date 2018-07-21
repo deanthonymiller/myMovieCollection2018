@@ -3,4 +3,9 @@ app.controller('ManageMoviesController', ['MovieCollectionService', function(Mov
     
     let self = this
 
+    self.getGenre = MovieCollectionService.getGenre;
+
+    self.postGenre = MovieCollectionService.postGenre;
+
+    self.genreOfMovies = MovieCollectionService.genreOfMovies;
 }])
