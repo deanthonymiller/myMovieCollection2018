@@ -26,7 +26,7 @@ router.post('/entry',(req, res) =>{
 router.get('/entry', (req, res) => {
     console.log('GET/movies');
     const queryText =  `SELECT genre, "name", "image_path", "release_date", "run_time" 
-    FROM "movies" JOIN "genre" ON "movies_id" = "movies"."id";`
+    FROM "movies" JOIN "genre" ON "movies"."id" = "movies"."id";`
     pool.query(queryText)
     .then(results => {
         res.send(results.rows);
