@@ -12,8 +12,8 @@ router.post('/entry',(req, res) =>{
     VALUES ($1, $2, $3, $4, $5);`;
 
     // INSERT INTO genre ("genre") VALUES ($1);
-    pool.query(queryText, [movie.name, movie.image_path, 
-        movie.release_date, movie.run_time, movie.genre])
+        pool.query(queryText, [movie.name, movie.image_path, 
+        movie.release_date, movie.run_time, movie.genre_id])
         .then((results) =>{
             console.log('we made it!');
             res.sendStatus(201)
@@ -26,7 +26,7 @@ router.post('/entry',(req, res) =>{
 router.get('/entry', (req, res) => {
     console.log('GET/movies');
     const queryText =  `SELECT genre, "name", "image_path", "release_date", "run_time" 
-    FROM "movies" JOIN "genre" ON "movies"."id" = "movies"."id";`
+    FROM "movies" JOIN "genre" ON "movies"."genre_id" = "genre"."id";`
     pool.query(queryText)
     .then(results => {
         res.send(results.rows);
@@ -56,8 +56,10 @@ router.post('/genre', (req, res) => {
 
 router.get('/genre', (req, res) => {
     console.log('GET/genre');
-    const queryText = `select count(*) as "total_movies", "genre" FROM "genre"
-    GROUP BY genre."genre";`
+    const queryText = `SELECT genre.*, count(movies) as "total_movies" FROM "genre"
+    LEFT JOIN movies ON genre."id" = movies."genre_id"
+    GROUP BY genre."id";
+    `
     pool.query(queryText)
     .then(results => {
         res.send(results.rows);

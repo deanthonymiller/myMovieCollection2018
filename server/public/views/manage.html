@@ -8,10 +8,22 @@
 <input  ng-model="vm.newGenre.genre" type="text">
 <button ng-click="vm.postGenre(vm.newGenre)">submit</button>
 
-<div ng-repeat="genre in vm.genreOfMovies.list">
 
-
-
-
-
+<div class="table table-dark">
+    <table>
+        <thead>
+            <tr>
+                <th>Genre</th>
+                <th>Total Movies</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="genre in vm.genreOfMovies.list">
+                <td>{{genre.genre}}</td>
+                <td>{{genre.total_movies}}</td>
+                <td><button>delete</button></td>
+            </tr>
+        </tbody>
+    </table>
 </div>
