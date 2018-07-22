@@ -28,7 +28,18 @@ app.service('MovieCollectionService', ['$http', function($http){
             
         })
     }
+//get to MoviesAPi
+    // self.getMovieApi = function(movie){
+    //     console.log('in movie api');
+    //    $http.get(`http://img.omdbapi.com/?apikey=${movie}&`)
+    //    .then(function(res){
+    //        console.log(res);
+           
+    //     self.addedMovies.url = res.data.data
+    //    }).catch(function(err){
 
+    //    })
+    // }
 
     self.getMovies = function(){
         $http({
