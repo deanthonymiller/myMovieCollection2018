@@ -62,10 +62,13 @@ app.service('MovieCollectionService', ['$http', function($http){
             url:`/movies/${movieId}`,
         }).then(function(res){
             self.getMovies();
+            self.getGenre();
         }).catch(function(err){
             console.log('we have a err in the deleteMovie DELETE req', err);
         })
     }
+    self.getMovies();
+
 //////////////////////////////////////////////////////////////////////
     self.postGenre = function(genreToAdd){
         $http({
