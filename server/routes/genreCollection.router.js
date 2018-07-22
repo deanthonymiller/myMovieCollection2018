@@ -23,7 +23,8 @@ router.post('/', (req, res) => {
 router.get('/', (req, res) => {
     console.log('GET/genre');
     const queryText = `SELECT genre.*, count(movies) as "total_movies", genre."id" as "genre_id" FROM "genre"
-    LEFT JOIN movies ON genre."id" = movies."genre_id" GROUP BY genre."id";`
+    LEFT JOIN movies ON genre."id" = movies."genre_id"
+    GROUP BY genre."id";`
     pool.query(queryText)
     .then(results => {
         res.send(results.rows);
