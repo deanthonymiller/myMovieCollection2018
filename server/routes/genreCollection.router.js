@@ -12,8 +12,8 @@ router.post('/', (req, res) => {
 
     pool.query(queryText, [genre.genre])
     .then(results =>{
-        res.send(results.rows)
-        res.sendStatus(201)
+        // res.send(results.rows)
+        res.sendStatus(201);
     }).catch(err => {
         console.log('err in genre POST', err );
         res.sendStatus(500);
@@ -22,14 +22,25 @@ router.post('/', (req, res) => {
 
 router.get('/', (req, res) => {
     console.log('GET/genre');
-    const queryText = `SELECT genre.*, count(movies) as "total_movies" FROM "genre"
-    LEFT JOIN movies ON genre."id" = movies."genre_id"
-    GROUP BY genre."id";`
+    const queryText = `SELECT genre.*, count(movies) as "total_movies", genre."id" as "genre_id" FROM "genre"
+    LEFT JOIN movies ON genre."id" = movies."genre_id" GROUP BY genre."id";`
     pool.query(queryText)
     .then(results => {
         res.send(results.rows);
     }).catch(err => {
         console.log('getting err in genre GET', err);
+    })
+})
+
+router.delete('/:id', (req, res) => {
+    console.log('DELETE/genre');
+    console.log(req.params.id);
+    const genreId = req.params.id;
+    pool.query(`DELETE FROM genre WHERE "id" = $1;`, [genreId])
+    .then(results => {
+        res.sendStatus(200);
+    }).catch(err => {
+        console.log('Error Deleting Genre', err);
     })
 })
 

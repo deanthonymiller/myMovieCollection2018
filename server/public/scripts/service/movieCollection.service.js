@@ -86,9 +86,17 @@ app.service('MovieCollectionService', ['$http', function($http){
     self.getGenre();
 
 
-    self.deleteGenre = function(){
+    self.deleteGenre = function(genreId){
         console.log('deleting genre');
-        
+        $http({
+            method:'DELETE',
+            url:`/genre/${genreId}`
+        }).then(function(res){
+            console.log(res);
+            self.getGenre();
+        }).catch(function(err){
+            console.log('we have a err in deleteGenre req', err);
+        })
     }
 ////////////////////////////////////////////////////////////////
     

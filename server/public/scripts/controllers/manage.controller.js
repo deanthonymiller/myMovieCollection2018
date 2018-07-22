@@ -8,4 +8,6 @@ app.controller('ManageMoviesController', ['MovieCollectionService', function(Mov
     self.postGenre = MovieCollectionService.postGenre;
 
     self.genreOfMovies = MovieCollectionService.genreOfMovies;
+    
+    self.deleteGenre = MovieCollectionService.deleteGenre;
 }])
