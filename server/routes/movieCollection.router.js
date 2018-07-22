@@ -4,7 +4,7 @@ const router = express.Router();
 const pool = require('../modules/pool.js');
 
 
-router.post('/entry',(req, res) =>{
+router.post('/',(req, res) =>{
     console.log('POST/movies/entry');
     let movie = req.body;
     const queryText = `INSERT INTO "movies" ("name", "image_path", 
@@ -23,10 +23,10 @@ router.post('/entry',(req, res) =>{
         })
 });
 //movies GET
-router.get('/entry', (req, res) => {
+router.get('/', (req, res) => {
     console.log('GET/movies');
-    const queryText =  `SELECT genre, "name", "image_path", "release_date", "run_time" 
-    FROM "movies" JOIN "genre" ON "movies"."genre_id" = "genre"."id";`
+    const queryText =  `SELECT genre, "name", "image_path", "release_date", "run_time", movies."id"
+    AS "movie_id" FROM "movies" JOIN "genre" ON "movies"."genre_id" = "genre"."id";`
     pool.query(queryText)
     .then(results => {
         res.send(results.rows);
@@ -35,38 +35,52 @@ router.get('/entry', (req, res) => {
         res.sendStatus(500)
     })
 })
+
+router.delete('/:id',(req, res) => {
+    console.log('DELETE');
+    const movieId = req.params.id;
+    pool.query(`DELETE FROM "movies" WHERE "id" = $1;`, [movieId])
+    .then(results => {
+        console.log(results);
+        
+        res.sendStatus(201);
+    })
+    .catch(err => {
+        console.log('err in delete router', err);
+        res.sendStatus(500);
+    })
+})
 ///////////////////////////////////////////////////////////////////////////////////////////
 
 
-router.post('/genre', (req, res) => {
-    console.log('POST/movies/genre');
-    const genres = req.body
-    const queryText =  `INSERT INTO "genre" ("genre")
-    VALUES ($1);`;
+// router.post('/genre', (req, res) => {
+//     console.log('POST/movies/genre');
+//     const genre = req.body
+//     const queryText =  `INSERT INTO genre ("genre")
+//     VALUES ($1);`;
 
-    pool.query(queryText, [genres.genre])
-    .then(results =>{
-        res.send(results.rows)
-        res.sendStatus(201)
-    }).catch(err => {
-        console.log('err in genre POST', err );
-        res.sendStatus(500);
-    })
-});
+//     pool.query(queryText, [genre.genre])
+//     .then(results =>{
+//         res.send(results.rows)
+//         res.sendStatus(201)
+//     }).catch(err => {
+//         console.log('err in genre POST', err );
+//         res.sendStatus(500);
+//     })
+// });
 
-router.get('/genre', (req, res) => {
-    console.log('GET/genre');
-    const queryText = `SELECT genre.*, count(movies) as "total_movies" FROM "genre"
-    LEFT JOIN movies ON genre."id" = movies."genre_id"
-    GROUP BY genre."id";
-    `
-    pool.query(queryText)
-    .then(results => {
-        res.send(results.rows);
-    }).catch(err => {
-        console.log('getting err in genre GET', err);
-    })
-})
+// router.get('/genre', (req, res) => {
+//     console.log('GET/genre');
+//     const queryText = `SELECT genre.*, count(movies) as "total_movies" FROM "genre"
+//     LEFT JOIN movies ON genre."id" = movies."genre_id"
+//     GROUP BY genre."id";`
+//     pool.query(queryText)
+//     .then(results => {
+//         res.send(results.rows);
+//     }).catch(err => {
+//         console.log('getting err in genre GET', err);
+//     })
+// })
 
 
  

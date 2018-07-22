@@ -17,7 +17,7 @@ app.service('MovieCollectionService', ['$http', function($http){
         console.log('In Add movie to database');
         $http({
             method:'POST',
-            url: '/movies/entry',
+            url: '/movies',
             data: movieToAdd
         }).then(function(res){
             console.log(res);
@@ -33,7 +33,7 @@ app.service('MovieCollectionService', ['$http', function($http){
     self.getMovies = function(){
         $http({
             method:'GET',
-            url:'/movies/entry'
+            url:'/movies'
         }).then(function(res){
             console.log(res);
             self.addedMovies.list = res.data
@@ -43,12 +43,23 @@ app.service('MovieCollectionService', ['$http', function($http){
         })
     }
     self.getMovies();
-
+    
+    self.deleteMovie = function(movieId){
+        console.log('in delete movie');
+        $http({
+            method:'DELETE',
+            url:`/movies/${movieId}`,
+        }).then(function(res){
+            self.getMovies();
+        }).catch(function(err){
+            console.log('we have a err in the deleteMovie DELETE req', err);
+        })
+    }
 //////////////////////////////////////////////////////////////////////
     self.postGenre = function(genreToAdd){
         $http({
             method:'POST',
-            url:'/movies/genre',
+            url:'/genre',
             data: genreToAdd
         }).then( function(res){
             console.log(res);
@@ -63,7 +74,7 @@ app.service('MovieCollectionService', ['$http', function($http){
         console.log('getting genre');
         $http({
             method:'GET',
-            url:'/movies/genre'
+            url:'/genre'
         }).then(function(res){
             console.log(res);
             self.genreOfMovies.list = res.data
@@ -74,19 +85,13 @@ app.service('MovieCollectionService', ['$http', function($http){
     }
     self.getGenre();
 
+
+    self.deleteGenre = function(){
+        console.log('deleting genre');
+        
+    }
 ////////////////////////////////////////////////////////////////
     
-    self.deleteMovie = function(movies_id){
-        $http({
-            method:'DELETE',
-            url:`/movies/${movies_id}`
-        }).then(function(res){
-            console.log(res);
-            
-        }).catch(function(err){
-            console.log('error in deleteMovie, dont forget that were using movieId');
-            
-        })
-    }
+   
 
 }]);    
