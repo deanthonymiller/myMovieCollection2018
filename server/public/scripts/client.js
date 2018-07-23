@@ -1,4 +1,4 @@
-let app = angular.module('MovieApp', ['ngRoute'])
+let app = angular.module('MovieApp', ['ngRoute','ngMaterial'])
 
 app.config(function($routeProvider){
 

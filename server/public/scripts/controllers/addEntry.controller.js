@@ -13,5 +13,5 @@ app.controller('AddEntryController', ['MovieCollectionService', function(MovieCo
 
     self.deleteMovie = MovieCollectionService.deleteMovie;
 
-    // self.getMovieApi = MovieCollectionService.getMovieApi;
+    self.getMovieApi = MovieCollectionService.getMovieApi;
 }])
