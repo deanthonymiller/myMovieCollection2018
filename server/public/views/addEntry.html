@@ -10,15 +10,33 @@
                 <option disabled selected value> --Select Movie Genre </option>
                 <option ng-repeat="mGenre in vm.genreOfMovies.list" value="{{mGenre.id}}">{{mGenre.genre}}</option>
             </select>
-<input ng-model="vm.newMovie.release_date" type="date">
+        <select ng-model="vm.newMovie.image_path">
+         <option disabled selected value> --Select Movie--</option>
+            <option value="22 _Full_Metal_Jacket.jpg">Full Metal Jacket</option>
+            <option value="download.jpg">Sherk</option>
+            <option value="Blade_Runner.jpg">Blade Runner</option>
+            <option value="23_Attack_of_the_50ft_woman.jpg">50ft woman</option>
+            <option value="Batman.jpg">Batman</option>
+            <option value="download-2.jpg">Thirteen Ghost</option>
+            <option value="download-1.jpg">Naruto</option>
+            <option value="littlemisssunshine.jpg">Miss Sunshine</option>
+            <option value="lordofwar.jpg">Lord of war</option>
+            <option value="Moon.jpg">Moon</option>
+            <option value="Rocketeer.jpg">Rocketeer</option>
+            <option value="The_Exorcist.jpg">The Exorcist</option>
+            <option value="The_Phantom_Menace.jpg">Phantom Menace</option>
+            <option value="The_Social_Network.jpg">Social Network</option>
+        </select>
+<input ng-model="vm.newMovie.release_date" placeholder="mm/dd/yyyy">
 <input ng-model="vm.newMovie.run_time" type="text" placeholder="Run Time">
+
 <button ng-click="vm.addMovies(vm.newMovie)">Submit Movie</button>
 <br>
-<div ng-repeat="movie in vm.addedMovies.list">
-    <h1>{{movie.name}}</h1>
+<div class="added"ng-repeat="movie in vm.addedMovies.list">
+    <img ng-src="../images/{{movie.image_path}}"/>
+    <h2>{{movie.name}}</h2>
     <p>{{movie.genre}}</p>
     <p>{{movie.release_date}}</p>
-    <p>{{movie.image_path}}</p>
     <p>{{movie.run_time}}</p>
     <button ng-click="vm.deleteMovie(movie.movie_id)">delete</button>
 </div>

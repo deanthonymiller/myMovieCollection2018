@@ -1,3 +1,9 @@
+body{
+    background-image: url(https://images.unsplash.com/photo-1440404653325-ab127d49abc1?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=85a8dfe53397e331a31030c530fadf44&auto=format&fit=crop&w=500&q=60);
+    background-size: cover;
+    max-width: 100%;
+    color: aliceblue
+}
 .container{
     float: left;
     margin: 15px;
@@ -6,3 +12,17 @@
 table {
     width: 100%;
   }
+
+  .added{
+    display:inline-block;
+    margin: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    padding: 2px 16px;
+    max-width: 20%;
+}
+
+img{
+    max-width: 100%;
+    font-family: fantasy
+}

@@ -28,14 +28,16 @@ app.service('MovieCollectionService', ['$http', function($http){
             
         })
     }
-//get to MoviesAPi
+    //http://www.omdbapi.com/?i=tt3896198&apikey=73341b64
+   // https://api.themoviedb.org/3/search/movie?query=${movie}&api_key=501f5b09429395eef64b451eeaec47e6&limit=1`)
+// get to MoviesAPi
     // self.getMovieApi = function(movie){
     //     console.log('in movie api');
-    //    $http.get(`http://img.omdbapi.com/?apikey=${movie}&`)
+    //    $http.get(`
+    //    https://api.themoviedb.org/3/movie/${movie}/images?language=en-US&api_key=501f5b09429395eef64b451eeaec47e6`)
     //    .then(function(res){
     //        console.log(res);
-           
-    //     self.addedMovies.url = res.data.data
+    //     self.addedMovies.list.results.id.poster_path = res.data.data
     //    }).catch(function(err){
 
     //    })
@@ -107,13 +109,21 @@ app.service('MovieCollectionService', ['$http', function($http){
             url:`/genre/${genreId}`
         }).then(function(res){
             console.log(res);
+           
             self.getGenre();
         }).catch(function(err){
             console.log('we have a err in deleteGenre req', err);
         })
     }
+
 ////////////////////////////////////////////////////////////////
     
-   
+//    self.clearInputs = function(){
+//     self.newMovie.name = null
+//     self.movie.genre = null
+//     self.movie.release_date = null
+//     self.movie.image_path = null
+//     self.movie.run_time = null
+//    }
 
 }]);    
