@@ -1,5 +1,7 @@
 ##  Movie Collection WebApp
-This is the Movie Collection WebApp, Where you can store you most names, genres, images, run times and dates.
+This is the Movie Collection WebApp,
+Where you can store you most names, 
+genres, images, run times and dates.
 
 Built With
 --------------------
@@ -9,12 +11,11 @@ Nodejs
 SQL
 BootStrap
 
-Getting Started
+## Getting Started
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
-Prerequisites
+## Prerequisites
 Link to software that is required to install the app (e.g. node).
-
 Node.js prerequisites here
   "angular": "^1.7.2",
   "angular-animate": "^1.7.2",
@@ -26,7 +27,7 @@ Node.js prerequisites here
   "pg": "^7.4.3",
   "url": "^0.11.0"
 
-
+## Postgreal
 CREATE TABLE "movies" (
     id SERIAL PRIMARY KEY,
     name VARCHAR(100),
@@ -43,7 +44,7 @@ id SERIAL PRIMARY KEY,
 );
 
 
-Completed Features
+## Completed Features
 High level list of items completed.
 
 add & delete Movies
@@ -51,16 +52,16 @@ delete and add Genres
 add images
 
 
-Next Steps
+## Next Steps
 update movies and Genres. 
 movie api instead of storing in house images
 edit feature
 
-Deployment
+## Deployment
 Add additional notes about how to deploy this on a live system
 
-Authors
+## Authors
 De'Anthony Miller
 
-Acknowledgments
+# Acknowledgments
 Instructors & everyone in the nunki class
